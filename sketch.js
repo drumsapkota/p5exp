@@ -1,26 +1,28 @@
+var r,g,b;
+
 function setup(){
 	createCanvas(740,400);
-	background(200);
-
-	//set colors
-	fill(204,101,192,127);
-	stroke(127,63,120);
-
-	//a rectangle
-	rect(40,120,120,40);
-
-	//an ellipse
-	ellipse(240,240,80,80);
-
-	//a triangle
-	triangle(300,100,320,100,310,80);
-
-	//designn of a simple flower
-	translate(580,200);
-	noStroke();
-	for(var i=0; i<10; i++){
-		ellipse(0,30,20,80);
-		rotate(PI/5);
-	}
+	//picking colors randomly
+	r = random(255);
+	g = random(255);
+	b = random(255);
+	
 }
 
+function draw(){ //the draw function runs continuously all the time while the program is running
+	background(127);
+	//draw a circle
+	strokeWeight(2);
+	stroke(r,g,b);
+	fill(r,g,b,127);
+	ellipse(360, 200, 200, 200);
+}
+
+function mousePressed(){
+	var d = dist(mouseX, mouseY, 360, 200);
+	if(d < 100){
+		r = random(255);
+		g = random(255);
+		b = random(255);
+	}
+}
