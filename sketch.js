@@ -1,28 +1,27 @@
-var r,g,b;
+var x, y;
 
 function setup(){
-	createCanvas(740,400);
-	//picking colors randomly
-	r = random(255);
-	g = random(255);
-	b = random(255);
-	
+	createCanvas(720,400);
+	x = width / 2;
+	y = height;
 }
 
-function draw(){ //the draw function runs continuously all the time while the program is running
-	background(127);
+function draw(){
+	background(200);
+
 	//draw a circle
-	strokeWeight(2);
-	stroke(r,g,b);
-	fill(r,g,b,127);
-	ellipse(360, 200, 200, 200);
-}
+	stroke(50);
+	fill(100);
+	ellipse(x, y, 24, 24);
 
-function mousePressed(){
-	var d = dist(mouseX, mouseY, 360, 200);
-	if(d < 100){
-		r = random(255);
-		g = random(255);
-		b = random(255);
+	//jiggle
+	x = x + random(-1, 1);
+	//move up at constant speed
+	y = y - 1;
+
+	//reset to the bottom
+
+	if(y<0){
+		y = height;
 	}
 }
