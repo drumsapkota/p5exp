@@ -1,18 +1,17 @@
 
 
 function setup(){
-	createCanvas(480,420);
-	noStroke();
-	//strokeWeight(2);
+	createCanvas(480,120);
+	//fill(255);
+	//stroke(102);
 }
 
 function draw(){
-	background(random(0,255),random(0,255),random(0,255),random(0,100));
-	
-	for(var y = 0; y<= height; y+=random(20,40)){
-		for(var x = 0; x <= width;  x+=random(20,40)){
-			fill(random(0,255),random(0,255),random(0,255));
-			ellipse(x,y,40,40);
+	background(0);
+	for(var y = 20; y <= height; y+=8){
+		for(var x = 12; x <= width; x+=15){
+			ellipse(x+y,y,16-y/10.0,16-y/10.0);
+			
 		}
 	}
 }
