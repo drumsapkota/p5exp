@@ -1,25 +1,26 @@
-
+var sine;
+var freq = 400;
 
 function setup(){
-	createCanvas(480,440);
-	background(0);
-	//create a audio input and start it
-	mic = new p5.AudioIn();
-	mic.start();
-	//create a new amplitude analyzer and patch input into it
-	amp = new p5.Amplitude();
-	amp.setInput(mic);
+	createCanvas(440,440);
+	//create and start the sine oscillator
+	sine = new p5.SinOsc();
+	sine.start();
 
 }
 
 function draw(){
-	noStroke();
-	fill(12,12,12,10);
-	rect(0,0,width,height);
-	scale = map(amp.getLevel(),0,1.0,10,width);
-	//draw the circle based on volume
-	fill(255);
-	newScale = random(scale, scale *30);
-	ellipse(width/2,height/2, newScale, newScale);
+	background(0);
+	//map the mouseX value for the value of freq
+	var hertz = map(mouseX,0,width,20.0,440.0);
+	sine.freq(hertz);
+	//Draw a wave to visualize the freq of the sound
+	stroke(204);
+	for(var x = 0 ;x < width; x ++){
+		var angle = map(x, 0, width, 0, TWO_PI * hertz);
+		var sineValue = sin(angle)*120;
+		line(x,0,x, height/2 + sineValue);
+	}
+	
 }
 
